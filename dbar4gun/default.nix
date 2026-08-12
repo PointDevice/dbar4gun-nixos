@@ -1,6 +1,6 @@
 {
   lib,
-  python3Packages,
+  python313Packages,
   fetchFromGitHub,
   versionCheckHook,
   writableTmpDirAsHomeHook,
@@ -21,9 +21,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-82OIzIammz5EuDcsWRzhevfuXQMRRYJ5nsXWTx+Pnis=";
   };
 
-  build-system = [ python3Packages.setuptools ];
+  build-system = [ python313Packages.setuptools ];
 
-  dependencies = with python3Packages; [
+  dependencies = with python313Packages; [
     evdev
     pyudev
     pygame
