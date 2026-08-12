@@ -26,6 +26,7 @@ python3Packages.buildPythonApplication rec {
   dependencies = with python3Packages; [
     evdev
     pyudev
+    pygame
   ];
 
   #nativeCheckInputs = [
