@@ -22,7 +22,7 @@ python313Packages.buildPythonApplication rec {
   };
 
   build-system = [ python313Packages.setuptools ];
-
+  patches = [ ./wiimotepatch.patch ];
   dependencies = with python313Packages; [
     evdev
     pyudev
