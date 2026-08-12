@@ -9,7 +9,7 @@
 
 let
 in
-python3Packages.buildPythonApplication rec {
+python313Packages.buildPythonApplication rec {
   pname = "dbar4gun";
   version = "0.18.2";
   pyproject = true;
