@@ -1,6 +1,6 @@
-# nixos-xivlauncher-rb
+# dbar4gun-nixos
 
-[XIVLauncher-RB](https://github.com/rankynbass/XIVLauncher.Core) for NixOS.
+[Dbar4gun](https://github.com/lowlevel-1989/dbar4gun) for NixOS.
 
 ## Installation
 
@@ -16,8 +16,8 @@ Then run `sudo nixos-rebuilt test`, then create a `flake.nix` file in your NixOS
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05"; # This should match the version of NixOS you want to use
 
-    nixos-xivlauncher-rb = {
-      url = "github:PointDevice/nixos-xivlauncher-rb";
+    dbar4gun-nixos = {
+      url = "github:PointDevice/dbar4gun-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -26,14 +26,14 @@ Then run `sudo nixos-rebuilt test`, then create a `flake.nix` file in your NixOS
    {
       self,
       nixpkgs,
-      nixos-xivlauncher-rb,
+      bdar4gun-nixos,
     }:
     {
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
           modules = [
             ./configuration.nix
-            nixos-xivlauncher-rb.nixosModules.default
+            dbar4gun-nixos.nixosModules.default
           ];
         };
       };
@@ -53,34 +53,7 @@ Then you can add `xivlauncher-rb` to `configuration.nix` like so:
 ...
 
 environment.systemPackages = [
-  xivlauncher-rb
-];
-```
-
-Optionally you can enable GameMode support:
-
-```nix
-environment.systemPackages = [
-  (xivlauncher-rb.override { useGameMode = true; })
-];
-```
-
-or DLSS support:
-
-```nix
-environment.systemPackages = [
-  (xivlauncher-rb.override { nvngxPath = "${config.hardware.nvidia.package}/lib/nvidia/wine"; })
-];
-```
-
-or both:
-
-```nix
-environment.systemPackages = [
-  (xivlauncher-rb.override {
-    useGameMode = true;
-    nvngxPath = "${config.hardware.nvidia.package}/lib/nvidia/wine";
-  })
+  dbar4gun
 ];
 ```
 
@@ -89,6 +62,4 @@ Now run `sudo nix flake update` in your NixOS configuration directory and rebuil
 ## Credits
 
 * [nur-packages-template](https://github.com/nix-community/nur-packages-template) for providing the original template for a Nix Flake
-* [sersorrel](https://github.com/sersorrel) and [witchof0x20](https://github.com/witchof0x20) for maintaining the [XIVLauncher package in Nixpkgs](https://github.com/NixOS/nixpkgs/tree/master/pkgs/by-name/xi/xivlauncher) which this heavily borrows from
-* [niklaskorz](https://github.com/niklaskorz) previous credit from forked repo, showed original author how to package for nix
-* [drakon64](https://github.com/drakon64) for creating the original repo for this project
+* [drakon64](https://github.com/drakon64) for creating the original repo for xivlauncher-rb for nixos, which this is forked from
