@@ -22,12 +22,15 @@ python313Packages.buildPythonApplication rec {
   };
 
   build-system = [ python313Packages.setuptools ];
+  #patch needed for me to use 3rd party wiimotes that i have, more graceful solution coming soon
   patches = [ ./wiimotepatch.patch ];
   dependencies = with python313Packages; [
     evdev
     pyudev
     pygame
   ];
+
+  #Program does not respond to the '--version' flag and will not work for now
 
   #nativeCheckInputs = [
   #  versionCheckHook
@@ -42,14 +45,13 @@ python313Packages.buildPythonApplication rec {
 
   meta = {
     description = "dbar4gun";
-#    changelog = "https://github.com/Mord3rca/gamma-launcher/releases/tag/v${version}";
-#    homepage = "https://github.com/Mord3rca/gamma-launcher";
-#    mainProgram = "gamma-launcher";
-#    license = lib.licenses.gpl3Plus;
-#    maintainers = with lib.maintainers; [
-#      DrymarchonShaun
-#      bbigras
-#    ];
+    changelog = "https://github.com/lowlevel-1989/dbar4gun/releases/tag/${version}";
+    homepage = "https://github.com/lowlevel-1989/dbar4gun";
+    mainProgram = "dbar4gun";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [
+      PointDevice
+    ];
     platforms = lib.platforms.linux;
   };
 }
