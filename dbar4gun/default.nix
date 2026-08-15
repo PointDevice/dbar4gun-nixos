@@ -22,8 +22,6 @@ python313Packages.buildPythonApplication rec {
   };
 
   build-system = [ python313Packages.setuptools ];
-  #patch needed for me to use 3rd party wiimotes that i have, more graceful solution coming soon
-  patches = [ ./wiimotepatch.patch ];
   dependencies = with python313Packages; [
     evdev
     pyudev
